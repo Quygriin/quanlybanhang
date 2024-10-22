@@ -42,7 +42,7 @@ public class khachhangdb implements dbInterface<khachhang>{
 	      String diaChi=rs.getString("diachi");
 	      String soDienThoai=rs.getString("sodt");
 	      String loaiKhachHang=rs.getString("loaikhachhang");
-	      String ghiChu=rs.getString("ghichi");
+	      String ghiChu=rs.getString("ghichu");
               
              khachhang kh=new khachhang(maKhachHang, tenkh, ngaySinh, gioiTinh, email, diaChi, soDienThoai, loaiKhachHang, ghiChu);
               ketqua.add(kh);
@@ -56,8 +56,38 @@ public class khachhangdb implements dbInterface<khachhang>{
 
     @Override
     public khachhang selectById(khachhang t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    
+        khachhang ketqua=null;
+        try {
+            // Bước 1: tạo kết nối đến CSDL
+            Connection c=JDBC.getConnection();
+            // Bước 2: tạo ra đối tượng statement
+            String sql = "SELECT * FROM khachhang where makh=?";
+            
+            PreparedStatement st=c.prepareStatement(sql);
+            st.setString(1, t.getMaKhachHang());
+            System.out.println(sql);
+            // Bước 3: thực thi câu lệnh SQL
+            ResultSet rs=st.executeQuery();
+            
+            while(rs.next()){
+              String maKhachHang=rs.getString("makh");
+	      String tenkh =rs.getString("tenkh");
+	      Date ngaySinh=rs.getDate("ngaysinh");
+	      String gioiTinh=rs.getString("gioitinh");
+	      String email=rs.getString("email");
+	      String diaChi=rs.getString("diachi");
+	      String soDienThoai=rs.getString("sodt");
+	      String loaiKhachHang=rs.getString("loaikhachhang");
+	      String ghiChu=rs.getString("ghichu");
+              
+             khachhang kh=new khachhang(maKhachHang, tenkh, ngaySinh, gioiTinh, email, diaChi, soDienThoai, loaiKhachHang, ghiChu);
+              ketqua=kh;
+            }
+             JDBC.closeConnection(c);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+         return ketqua;
     }
 
     @Override
@@ -119,7 +149,31 @@ public class khachhangdb implements dbInterface<khachhang>{
 
     @Override
     public int update(khachhang t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        int ketqua=0;
+        try {
+            Connection c=JDBC.getConnection();
+            
+            String sql="update khachhang set  tenkh=?, ngaySinh=?, gioiTinh=?, email=?, diaChi=?, sodt=?, loaiKhachHang=?, ghiChu=?"
+                    + " where makh=?";
+            PreparedStatement st=c.prepareStatement(sql);
+          st.setString(9, t.getMaKhachHang() );
+            st.setString(1, t.getTenkh());
+            st.setDate(2,  t.getNgaySinh());
+            st.setString(3, t.getGioiTinh());
+            st.setString(4, t.getEmail() );
+            st.setString(5, t.getDiaChi());
+            st.setString(6, t.getSoDienThoai());
+            st.setString(7, t.getLoaiKhachHang());
+            st.setString(8, t.getGhiChu());
+            System.out.println(sql);
+            ketqua =st.executeUpdate();
+            
+            JDBC.closeConnection(c);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ketqua;
+               
     }
     
 }
