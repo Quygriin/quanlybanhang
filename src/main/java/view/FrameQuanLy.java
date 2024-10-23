@@ -216,7 +216,6 @@ public class FrameQuanLy extends javax.swing.JFrame {
         });
 
         jButton21.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton21.setIcon(new javax.swing.ImageIcon("C:\\Users\\admin\\OneDrive\\Documents\\NetBeansProjects\\quanlybanhang1\\src\\main\\java\\icon1\\search.png")); // NOI18N
         jButton21.setText("Tìm");
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
@@ -241,12 +240,11 @@ public class FrameQuanLy extends javax.swing.JFrame {
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton21))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
                 .addGap(23, 23, 23))
         );
 
         btnThemKhachHang.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnThemKhachHang.setIcon(new javax.swing.ImageIcon("C:\\Users\\admin\\OneDrive\\Documents\\NetBeansProjects\\quanlybanhang1\\src\\main\\java\\icon1\\add.png")); // NOI18N
         btnThemKhachHang.setText("Thêm Mới Khách Hàng");
         btnThemKhachHang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -255,7 +253,6 @@ public class FrameQuanLy extends javax.swing.JFrame {
         });
 
         btnCapNhatkhachHang.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnCapNhatkhachHang.setIcon(new javax.swing.ImageIcon("C:\\Users\\admin\\OneDrive\\Documents\\NetBeansProjects\\quanlybanhang1\\src\\main\\java\\icon1\\update-arrow.png")); // NOI18N
         btnCapNhatkhachHang.setText("Cập Nhật");
         btnCapNhatkhachHang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -264,7 +261,6 @@ public class FrameQuanLy extends javax.swing.JFrame {
         });
 
         btnXoakh.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnXoakh.setIcon(new javax.swing.ImageIcon("C:\\Users\\admin\\OneDrive\\Documents\\NetBeansProjects\\quanlybanhang\\src\\icon1\\remove-button.png")); // NOI18N
         btnXoakh.setText("Xóa");
         btnXoakh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -273,7 +269,6 @@ public class FrameQuanLy extends javax.swing.JFrame {
         });
 
         jButton20.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton20.setIcon(new javax.swing.ImageIcon("C:\\Users\\admin\\OneDrive\\Documents\\NetBeansProjects\\quanlybanhang\\src\\icon1\\logout.png")); // NOI18N
         jButton20.setText("Thoát");
         jButton20.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -478,7 +473,7 @@ public class FrameQuanLy extends javax.swing.JFrame {
                     .addComponent(tfDiachi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbkh)
                     .addComponent(lbkh5))
-                .addGap(26, 26, 26)
+                .addGap(29, 29, 29)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -549,7 +544,7 @@ public class FrameQuanLy extends javax.swing.JFrame {
                 .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Khách Hàng", new javax.swing.ImageIcon("C:\\Users\\admin\\OneDrive\\Documents\\NetBeansProjects\\quanlybanhang\\src\\icon1\\user.png"), jPanel3); // NOI18N
+        jTabbedPane1.addTab("Khách Hàng", null, jPanel3);
 
         jPanel8.setBackground(new java.awt.Color(204, 255, 204));
         jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thống Kê Doanh Thu", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(255, 51, 51))); // NOI18N
@@ -587,13 +582,12 @@ public class FrameQuanLy extends javax.swing.JFrame {
                 .addContainerGap(66, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("Nhập Ngày", new javax.swing.ImageIcon("C:\\Users\\admin\\OneDrive\\Documents\\NetBeansProjects\\quanlybanhang\\src\\icon1\\search.png"), jPanel13); // NOI18N
+        jTabbedPane2.addTab("Nhập Ngày", null, jPanel13);
 
         jButton8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton8.setText("Lấy danh sách Doanh Thu");
 
         jButton9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton9.setIcon(new javax.swing.ImageIcon("C:\\Users\\admin\\OneDrive\\Documents\\NetBeansProjects\\quanlybanhang\\src\\icon1\\thongke.png")); // NOI18N
         jButton9.setText("Thống Kê");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -693,7 +687,6 @@ public class FrameQuanLy extends javax.swing.JFrame {
         jLabel34.setText("VND");
 
         jButton10.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton10.setIcon(new javax.swing.ImageIcon("C:\\Users\\admin\\OneDrive\\Documents\\NetBeansProjects\\quanlybanhang\\src\\icon1\\search.png")); // NOI18N
         jButton10.setText("Chi Tiết ");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -702,7 +695,6 @@ public class FrameQuanLy extends javax.swing.JFrame {
         });
 
         jButton11.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton11.setIcon(new javax.swing.ImageIcon("C:\\Users\\admin\\OneDrive\\Documents\\NetBeansProjects\\quanlybanhang\\src\\icon1\\remove-button.png")); // NOI18N
         jButton11.setText("Xóa Thu Chi");
         jButton11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -711,7 +703,6 @@ public class FrameQuanLy extends javax.swing.JFrame {
         });
 
         jButton12.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton12.setIcon(new javax.swing.ImageIcon("C:\\Users\\admin\\OneDrive\\Documents\\NetBeansProjects\\quanlybanhang\\src\\icon1\\add.png")); // NOI18N
         jButton12.setText("Thêm Thu Chi");
         jButton12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -720,7 +711,6 @@ public class FrameQuanLy extends javax.swing.JFrame {
         });
 
         jButton13.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton13.setIcon(new javax.swing.ImageIcon("C:\\Users\\admin\\OneDrive\\Documents\\NetBeansProjects\\quanlybanhang1\\src\\main\\java\\icon1\\save.png")); // NOI18N
         jButton13.setText("In Báo Cáo");
         jButton13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -729,7 +719,6 @@ public class FrameQuanLy extends javax.swing.JFrame {
         });
 
         jButton14.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton14.setIcon(new javax.swing.ImageIcon("C:\\Users\\admin\\OneDrive\\Documents\\NetBeansProjects\\quanlybanhang\\src\\icon1\\logout.png")); // NOI18N
         jButton14.setText("Thoát");
         jButton14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -855,7 +844,7 @@ public class FrameQuanLy extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Doanh thu", new javax.swing.ImageIcon("C:\\Users\\admin\\OneDrive\\Documents\\NetBeansProjects\\quanlybanhang\\src\\icon1\\money.png"), jPanel4); // NOI18N
+        jTabbedPane1.addTab("Doanh thu", null, jPanel4);
 
         jPanel5.setBackground(new java.awt.Color(204, 204, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh Sách Hóa Đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24), new java.awt.Color(255, 0, 51))); // NOI18N
@@ -882,7 +871,6 @@ public class FrameQuanLy extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable2);
 
         jButton5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon("C:\\Users\\admin\\OneDrive\\Documents\\NetBeansProjects\\quanlybanhang\\src\\icon1\\search.png")); // NOI18N
         jButton5.setText("Chi Tiết Hóa Đơn");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -891,7 +879,6 @@ public class FrameQuanLy extends javax.swing.JFrame {
         });
 
         jButton6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton6.setIcon(new javax.swing.ImageIcon("C:\\Users\\admin\\OneDrive\\Documents\\NetBeansProjects\\quanlybanhang\\src\\icon1\\remove-button.png")); // NOI18N
         jButton6.setText("Xóa");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -900,7 +887,6 @@ public class FrameQuanLy extends javax.swing.JFrame {
         });
 
         jButton7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton7.setIcon(new javax.swing.ImageIcon("C:\\Users\\admin\\OneDrive\\Documents\\NetBeansProjects\\quanlybanhang\\src\\icon1\\logout.png")); // NOI18N
         jButton7.setText("Thoát");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -957,7 +943,7 @@ public class FrameQuanLy extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Hóa Đơn ", new javax.swing.ImageIcon("C:\\Users\\admin\\OneDrive\\Documents\\NetBeansProjects\\quanlybanhang\\src\\icon1\\approve-invoice.png"), jPanel2); // NOI18N
+        jTabbedPane1.addTab("Hóa Đơn ", null, jPanel2);
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chi Tiết Sản Phẩm", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 18), new java.awt.Color(255, 51, 51))); // NOI18N
 
@@ -989,7 +975,6 @@ public class FrameQuanLy extends javax.swing.JFrame {
         });
 
         jButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\admin\\OneDrive\\Documents\\NetBeansProjects\\quanlybanhang\\src\\icon1\\addproduct.png")); // NOI18N
         jButton1.setText("Thêm Mới");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1012,7 +997,6 @@ public class FrameQuanLy extends javax.swing.JFrame {
         jLabel48.setText("VND");
 
         jButton2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\admin\\OneDrive\\Documents\\NetBeansProjects\\quanlybanhang\\src\\icon1\\update-arrow.png")); // NOI18N
         jButton2.setText("Cập Nhật");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1021,7 +1005,6 @@ public class FrameQuanLy extends javax.swing.JFrame {
         });
 
         jButton3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\admin\\OneDrive\\Documents\\NetBeansProjects\\quanlybanhang\\src\\icon1\\remove-button.png")); // NOI18N
         jButton3.setText("Xóa");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1030,7 +1013,6 @@ public class FrameQuanLy extends javax.swing.JFrame {
         });
 
         jButton4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\admin\\OneDrive\\Documents\\NetBeansProjects\\quanlybanhang\\src\\icon1\\logout.png")); // NOI18N
         jButton4.setText("Thoát");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1296,7 +1278,7 @@ public class FrameQuanLy extends javax.swing.JFrame {
                 .addGap(29, 29, 29))
         );
 
-        jTabbedPane1.addTab("Sản Phẩm", new javax.swing.ImageIcon("C:\\Users\\admin\\OneDrive\\Documents\\NetBeansProjects\\quanlybanhang\\src\\icon1\\shopping-cart.png"), jPanel1); // NOI18N
+        jTabbedPane1.addTab("Sản Phẩm", null, jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1433,7 +1415,17 @@ public class FrameQuanLy extends javax.swing.JFrame {
               
              
     }//GEN-LAST:event_btnCapNhatkhachHangActionPerformed
-
+ public void reset(){
+        tfDiachi.setText("");
+        tfEmail.setText("");
+       tfGhiChu.setText("");
+       tfSodt.setText("");
+       tfmakh.setText("");
+       tftenkh.setText("");
+       buttonGroup1.clearSelection();
+       buttonGroup2.clearSelection();
+       
+    }
     private void btnThemKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemKhachHangActionPerformed
               String maKhachHang=tfmakh.getText();
 	      String tenkh =tftenkh.getText();
@@ -1471,6 +1463,7 @@ public class FrameQuanLy extends javax.swing.JFrame {
              
               khachhangdb k = new khachhangdb();
               k.insert(kh);
+              reset();
                       
     }//GEN-LAST:event_btnThemKhachHangActionPerformed
 
