@@ -195,6 +195,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Qu&#xea;n M&#x1ead;t Kh&#x1ea9;u?"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnquenmatkhauActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnDangky">
       <Properties>

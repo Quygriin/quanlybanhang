@@ -4,7 +4,8 @@
  */
 package view;
 
-import database.quanlytaikhoandb;
+import controller.MaHoa;
+import controller.quanlytaikhoandb;
 import javax.swing.JOptionPane;
 import model.quanlytaikhoan;
 
@@ -19,6 +20,7 @@ public class FrameDangKy extends javax.swing.JFrame {
      */
     public FrameDangKy() {
         initComponents();
+       
     }
 
     /**
@@ -199,7 +201,10 @@ public class FrameDangKy extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+private boolean isValidEmail(String email) {
+    String emailRegex = "^[A-Za-z0-9+_.-]+@(.+)$"; // Regex kiểm tra định dạng email
+    return email.matches(emailRegex);
+}
     private void btndangkyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndangkyActionPerformed
       String tennguoidung=tftennguoidung.getText();
       String taikhoan=tftaikhoan.getText();
@@ -207,7 +212,8 @@ public class FrameDangKy extends javax.swing.JFrame {
       String matkhaunhaplai=tfmatkhaunhaplai.getText();
       String email=tfemail.getText();
       String sdt=tfsodienthoai.getText();
-        quanlytaikhoan ql=new quanlytaikhoan(tennguoidung, taikhoan, matkhau, email, sdt);
+      String matkhau1=MaHoa.toSHA1(matkhau);
+        quanlytaikhoan ql=new quanlytaikhoan(tennguoidung, taikhoan, matkhau1, email, sdt);
         quanlytaikhoandb qldb=new quanlytaikhoandb();
         StringBuilder sb=new StringBuilder();
         
@@ -215,6 +221,10 @@ public class FrameDangKy extends javax.swing.JFrame {
         if(taikhoan.equals("")) sb.append("Chưa nhập tài khoản \n");
         if(matkhau.equals("")) sb.append("Chưa nhập mật khẩu \n");
         if(email.equals("")) sb.append("Chưa nhập email \n");
+        else{
+            if(!isValidEmail(email)) sb.append("email không hợp lệ");
+            if(qldb.kiemtraemail(email)) sb.append("email đã tồn tại");
+        }
         if(sdt.equals("")) sb.append("Chưa nhập số điện thoại \n");
        
         if(!matkhau.equals(matkhaunhaplai)) sb.append("mật khẩu không trùng mật khẩu nhập lại \n");

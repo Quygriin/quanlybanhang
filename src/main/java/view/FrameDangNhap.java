@@ -4,7 +4,8 @@
  */
 package view;
 
-import database.quanlytaikhoandb;
+import controller.MaHoa;
+import controller.quanlytaikhoandb;
 import javax.swing.JOptionPane;
 import model.quanlytaikhoan;
 
@@ -107,6 +108,11 @@ public class FrameDangNhap extends javax.swing.JFrame {
         });
 
         btnquenmatkhau.setText("Quên Mật Khẩu?");
+        btnquenmatkhau.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnquenmatkhauActionPerformed(evt);
+            }
+        });
 
         btnDangky.setText("Đăng Ký");
         btnDangky.addActionListener(new java.awt.event.ActionListener() {
@@ -193,11 +199,11 @@ public class FrameDangNhap extends javax.swing.JFrame {
         String taikhoan=tfTenDangNhap.getText();
         String matkhau=new String(pwmatkhau.getPassword());
         StringBuilder sb=new StringBuilder();
-        
+         String matkhau1=MaHoa.toSHA1(matkhau);
         if(taikhoan.equals("")) sb.append("Chưa nhập tài khoản\n");
         if(matkhau.equals("")) sb.append("Chưa nhập mật khẩu\n");
         quanlytaikhoandb qldb=new quanlytaikhoandb();
-        quanlytaikhoan ql=new quanlytaikhoan("", taikhoan, matkhau, "", "");
+        quanlytaikhoan ql=new quanlytaikhoan("", taikhoan, matkhau1, "", "");
         
         
         if(sb.length()>0){
@@ -217,6 +223,12 @@ public class FrameDangNhap extends javax.swing.JFrame {
     private void pwmatkhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwmatkhauActionPerformed
        
     }//GEN-LAST:event_pwmatkhauActionPerformed
+
+    private void btnquenmatkhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnquenmatkhauActionPerformed
+       Framequenmatkhau quenmatkhau=new Framequenmatkhau();
+       quenmatkhau.setVisible(true);
+       quenmatkhau.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnquenmatkhauActionPerformed
 
     /**
      * @param args the command line arguments

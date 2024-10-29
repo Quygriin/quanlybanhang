@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package database;
+package controller;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -95,6 +95,29 @@ public class quanlytaikhoandb implements dbInterface<quanlytaikhoan>{
         return ketqua;
         
 }
+     public boolean kiemtraemail(String t){
+       boolean ketqua=false;
+        try {
+            Connection c=JDBC.getConnection();
+            
+            String sql="select * from taikhoan where email=?";
+            PreparedStatement st=c.prepareStatement(sql);
+            st.setString(1, t);
+           
+            
+            ResultSet rs  = st.executeQuery();
+            System.out.println(sql);
+            while(rs.next()){
+                ketqua=true;
+            }
+            
+            JDBC.closeConnection(c);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ketqua;
+        
+}
     public boolean dangnhap(quanlytaikhoan t){
         boolean ketqua=false;
         try {
@@ -111,6 +134,28 @@ public class quanlytaikhoandb implements dbInterface<quanlytaikhoan>{
             while(rs.next()){
                 ketqua=true;
             }
+            
+            JDBC.closeConnection(c);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ketqua;
+    }
+    public int updatePassword(String email,String matkhau){
+        int ketqua=0;
+        
+        try {
+            Connection c=JDBC.getConnection();
+            
+            String sql="update taikhoan set matkhau=? where email=?";
+            PreparedStatement st=c.prepareStatement(sql);
+            st.setString(1, matkhau );
+            st.setString(2, email);
+            
+            
+          ketqua= st.executeUpdate();
+            System.out.println(sql);
+            
             
             JDBC.closeConnection(c);
         } catch (Exception e) {
