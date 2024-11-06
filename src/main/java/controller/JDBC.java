@@ -17,7 +17,7 @@ import java.sql.Statement;
 public class JDBC {
     public static Connection getConnection() throws ClassNotFoundException {
         Connection con=null;
- String url="jdbc:sqlserver://localhost:1433;databaseName=quanlybanhang;user=sa;password=123456;encrypt=true;trustServerCertificate=true;";
+ String url="jdbc:sqlserver://localhost:1433;databaseName=quanlybanhang;user=sa;password=123;encrypt=true;trustServerCertificate=true;";
      
         try  {
              Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
