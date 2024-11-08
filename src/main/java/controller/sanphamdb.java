@@ -20,10 +20,10 @@ public class sanphamdb implements dbInterface<sanpham> {
             ResultSet rs = st.executeQuery();
 
             while (rs.next()) {
-                String maSp = rs.getString("masp");
-                String tenSp = rs.getString("tensp");
-                String loaiSp = rs.getString("loaisp");
-                String nhaCungCap = rs.getString("nhacungcap");
+                String maSp = rs.getString("masanpham");
+                String tenSp = rs.getString("tensanpham");
+                String loaiSp = rs.getString("loaisanpham");
+                String nhaCungCap = rs.getString("nhasanxuat");
                 int soluong = rs.getInt("soluong");
                 int gianhap = rs.getInt("gianhap");
                 int giaban = rs.getInt("giaban");
@@ -43,7 +43,7 @@ public class sanphamdb implements dbInterface<sanpham> {
         sanpham ketqua = null;
         try {
             Connection c = JDBC.getConnection();
-            String sql = "SELECT * FROM sanpham where masp=?";
+            String sql = "SELECT * FROM sanpham where masanpham=?";
             PreparedStatement st = c.prepareStatement(sql);
             st.setString(1, t.getmasp());
 
@@ -51,15 +51,15 @@ public class sanphamdb implements dbInterface<sanpham> {
             ResultSet rs = st.executeQuery();
 
             if (rs.next()) {
-                String maSp = rs.getString("masp");
-                String tenSp = rs.getString("tensp");
-                String loaiSp = rs.getString("loaisp");
-                String nhaCungCap = rs.getString("nhacungcap");
-                int soLuong = rs.getInt("soluong");
-                int giaNhap = rs.getInt("gianhap");
-                int giaBan = rs.getInt("giaban");
+                 String maSp = rs.getString("masanpham");
+                String tenSp = rs.getString("tensanpham");
+                String loaiSp = rs.getString("loaisanpham");
+                String nhaCungCap = rs.getString("nhasanxuat");
+                int soluong = rs.getInt("soluong");
+                int gianhap = rs.getInt("gianhap");
+                int giaban = rs.getInt("giaban");
 
-                ketqua = new sanpham(loaiSp, maSp, nhaCungCap, tenSp, soLuong, giaNhap, giaBan);
+                ketqua = new sanpham(loaiSp, maSp, nhaCungCap, tenSp, soluong, gianhap, giaban);
             }
             JDBC.closeConnection(c);
         } catch (Exception e) {

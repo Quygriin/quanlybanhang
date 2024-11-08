@@ -8,8 +8,11 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import model.doanhthu;
+
 
 
 /**
@@ -136,5 +139,82 @@ public class doanhthudb implements dbInterface<doanhthu>{
         }
         return ketqua;
     }
+     public ArrayList<doanhthu> selectbyMonth(Date batdau,Date ketthuc) {
+        
+        ArrayList<doanhthu> ketqua=new ArrayList<doanhthu>();
+        try {
+            // Bước 1: tạo kết nối đến CSDL
+            Connection c=JDBC.getConnection();
+            // Bước 2: tạo ra đối tượng statement
+            String sql = "SELECT sum(tongtien) as tongtien, YEAR(ngaydoanhthu) AS Nam, MONTH(ngaydoanhthu) AS Thang "
+                    + "FROM doanhthu where ngaydoanhthu between ? and ? "
+                    + "GROUP BY YEAR(ngaydoanhthu), MONTH(ngaydoanhthu) "
+                    + "ORDER BY Nam, Thang";
+            
+            PreparedStatement st=c.prepareStatement(sql);
+            
+            st.setString(1, batdau.toString());
+           st.setString(2, ketthuc.toString());
+            System.out.println("SELECT sum(tongtien) as tongtien, YEAR(ngaydoanhthu) AS Nam, MONTH(ngaydoanhthu) AS Thang,"
+                    + "FROM doanhthu where ngaydoanhthu between" + batdau + " and "+ ketthuc 
+                    + "GROUP BY YEAR(ngaydoanhthu), MONTH(ngaydoanhthu)"
+                    + "ORDER BY Nam, Thang");
+            // Bước 3: thực thi câu lệnh SQL
+            ResultSet rs=st.executeQuery();
+            
+            while(rs.next()){
+              double tongtien=rs.getDouble("tongtien");
+              int nam=rs.getInt("Nam");
+              int thang=rs.getInt("Thang");
+              LocalDate l=LocalDate.of(nam, thang, 1);
+              Date date=Date.valueOf(l);
+              doanhthu dt=new doanhthu("", date, tongtien, "");
+              ketqua.add(dt);
+            }
+             JDBC.closeConnection(c);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ketqua;
+    }
+
+    public ArrayList<doanhthu> selectbyYear(Date batdau, Date ketthuc) {
+      ArrayList<doanhthu> ketqua=new ArrayList<doanhthu>();
+        try {
+            // Bước 1: tạo kết nối đến CSDL
+            Connection c=JDBC.getConnection();
+            // Bước 2: tạo ra đối tượng statement
+            String sql = "SELECT sum(tongtien) as tongtien, YEAR(ngaydoanhthu) AS Nam, MONTH(ngaydoanhthu) AS Thang "
+                    + "FROM doanhthu where ngaydoanhthu between ? and ? "
+                    + "GROUP BY YEAR(ngaydoanhthu), MONTH(ngaydoanhthu) "
+                    + "ORDER BY Nam, Thang";
+            
+            PreparedStatement st=c.prepareStatement(sql);
+            
+            st.setString(1, batdau.toString());
+           st.setString(2, ketthuc.toString());
+            System.out.println("SELECT sum(tongtien) as tongtien, YEAR(ngaydoanhthu) AS Nam "
+                    + "FROM doanhthu where ngaydoanhthu between" + batdau + " and "+ ketthuc 
+                    + "GROUP BY YEAR(ngaydoanhthu) "
+                    + "ORDER BY Nam");
+            // Bước 3: thực thi câu lệnh SQL
+            ResultSet rs=st.executeQuery();
+            
+            while(rs.next()){
+              double tongtien=rs.getDouble("tongtien");
+              int nam=rs.getInt("Nam");
+             
+              LocalDate l=LocalDate.of(nam, 1, 1);
+              Date date=Date.valueOf(l);
+              doanhthu dt=new doanhthu("", date, tongtien, "");
+              ketqua.add(dt);
+            }
+             JDBC.closeConnection(c);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ketqua;
+    }
+    
 
 }
