@@ -146,7 +146,7 @@ public int update(sanpham t) {
         try {
             Connection c = JDBC.getConnection();
 
-            String sql = "DELETE FROM sanpham WHERE masp=?";
+            String sql = "DELETE FROM sanpham WHERE masanpham=?";
             PreparedStatement st = c.prepareStatement(sql);
             st.setString(1, t.getmasp());
 

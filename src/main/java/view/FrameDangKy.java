@@ -42,7 +42,6 @@ public class FrameDangKy extends javax.swing.JFrame {
         tftaikhoan = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        tfmatkhaunhaplai = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         tfemail = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -50,6 +49,7 @@ public class FrameDangKy extends javax.swing.JFrame {
         tfsodienthoai = new javax.swing.JTextField();
         btndangky = new javax.swing.JButton();
         pwmatkhau = new javax.swing.JPasswordField();
+        tfmatkhaunhaplai = new javax.swing.JPasswordField();
         btntrolai = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -103,23 +103,25 @@ public class FrameDangKy extends javax.swing.JFrame {
                                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(43, 43, 43)
                                     .addComponent(tfemail, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel5)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(tfmatkhaunhaplai, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(43, 43, 43)
                                         .addComponent(tftennguoidung, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(43, 43, 43)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(43, 43, 43))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel5)
+                                                .addGap(39, 39, 39)))
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(tftaikhoan, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                                            .addComponent(pwmatkhau)))))
+                                            .addComponent(pwmatkhau)
+                                            .addComponent(tfmatkhaunhaplai)))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(43, 43, 43)
@@ -206,26 +208,26 @@ private boolean isValidEmail(String email) {
     return email.matches(emailRegex);
 }
     private void btndangkyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndangkyActionPerformed
-      String tennguoidung=tftennguoidung.getText();
-      String taikhoan=tftaikhoan.getText();
+      String tennguoidung=tftennguoidung.getText().trim();
+      String taikhoan=tftaikhoan.getText().trim();
       String matkhau=new String(pwmatkhau.getPassword());
       String matkhaunhaplai=tfmatkhaunhaplai.getText();
-      String email=tfemail.getText();
-      String sdt=tfsodienthoai.getText();
+      String email=tfemail.getText().trim();
+      String sdt=tfsodienthoai.getText().trim();
       String matkhau1=MaHoa.toSHA1(matkhau);
         quanlytaikhoan ql=new quanlytaikhoan(tennguoidung, taikhoan, matkhau1, email, sdt);
         quanlytaikhoandb qldb=new quanlytaikhoandb();
         StringBuilder sb=new StringBuilder();
         
         if(tennguoidung.equals("")) sb.append("Chưa nhập tên người dùng \n");
-        if(taikhoan.equals("")) sb.append("Chưa nhập tài khoản \n");
-        if(matkhau.equals("")) sb.append("Chưa nhập mật khẩu \n");
+        if(taikhoan.length()<6) sb.append("Nhập tài khoản ít nhất 6 ký tự \n");
+        if(matkhau.length()<6) sb.append("Nhập mật khẩu it nhất 6 ký tự \n");
         if(email.equals("")) sb.append("Chưa nhập email \n");
         else{
             if(!isValidEmail(email)) sb.append("email không hợp lệ");
             if(qldb.kiemtraemail(email)) sb.append("email đã tồn tại");
         }
-        if(sdt.equals("")) sb.append("Chưa nhập số điện thoại \n");
+        if(isValidphone(sdt)) sb.append("Chưa nhập đúng số điện thoại \n");
        
         if(!matkhau.equals(matkhaunhaplai)) sb.append("mật khẩu không trùng mật khẩu nhập lại \n");
         
@@ -242,7 +244,10 @@ private boolean isValidEmail(String email) {
         }
         
     }//GEN-LAST:event_btndangkyActionPerformed
-
+ private boolean isValidphone(String sdt){
+      String phoneNumber="\\d{10}";
+      return sdt.matches(phoneNumber);
+  }
     private void btntrolaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntrolaiActionPerformed
        FrameDangNhap dn=new FrameDangNhap();
        dn.setVisible(true);
@@ -301,7 +306,7 @@ private boolean isValidEmail(String email) {
     private javax.swing.JTable jTable1;
     private javax.swing.JPasswordField pwmatkhau;
     private javax.swing.JTextField tfemail;
-    private javax.swing.JTextField tfmatkhaunhaplai;
+    private javax.swing.JPasswordField tfmatkhaunhaplai;
     private javax.swing.JTextField tfsodienthoai;
     private javax.swing.JTextField tftaikhoan;
     private javax.swing.JTextField tftennguoidung;

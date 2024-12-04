@@ -57,7 +57,7 @@ public class hoadondb implements dbInterface<hoadon>{
             // Bước 1: tạo kết nối đến CSDL
             Connection c=JDBC.getConnection();
             // Bước 2: tạo ra đối tượng statement
-            String sql = "SELECT * FROM khachhang where makh=?";
+            String sql = "SELECT * FROM hoadon where mahoadon=?";
             
             PreparedStatement st=c.prepareStatement(sql);
             st.setString(1, t.getMahoadon());

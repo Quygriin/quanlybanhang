@@ -28,7 +28,7 @@ public class quanlytaikhoandb implements dbInterface<quanlytaikhoan>{
         try {
             Connection c=JDBC.getConnection();
             
-            String sql="insert into taikhoan(tennguoidung,taikhoan,matkhau,email,sdt) values (?,?,?,?,?) ";
+            String sql="insert into taikhoan(tennguoidung,tentaikhoan,matkhau,email,sdt) values (?,?,?,?,?) ";
                   
             PreparedStatement st=c.prepareStatement(sql);
             st.setString(1, t.getTennguoidung());
@@ -77,7 +77,7 @@ public class quanlytaikhoandb implements dbInterface<quanlytaikhoan>{
         try {
             Connection c=JDBC.getConnection();
             
-            String sql="select * from taikhoan where taikhoan=?";
+            String sql="select * from taikhoan where tentaikhoan=?";
             PreparedStatement st=c.prepareStatement(sql);
             st.setString(1, t.getTaikhoan());
            
@@ -123,7 +123,7 @@ public class quanlytaikhoandb implements dbInterface<quanlytaikhoan>{
         try {
             Connection c=JDBC.getConnection();
             
-            String sql="select * from taikhoan where taikhoan=? and matkhau=?";
+            String sql="select * from taikhoan where tentaikhoan=? and matkhau=?";
             PreparedStatement st=c.prepareStatement(sql);
             st.setString(1, t.getTaikhoan());
             st.setString(2, t.getMatkhau());
