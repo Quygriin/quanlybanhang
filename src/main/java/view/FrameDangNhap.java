@@ -22,6 +22,11 @@ public class FrameDangNhap extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
     }
+private String user;
+
+    public String getUser() {
+        return user;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -212,8 +217,9 @@ public class FrameDangNhap extends javax.swing.JFrame {
             if(!qldb.dangnhap(ql)){
             JOptionPane.showMessageDialog(null, "Tài khoản hoặc mật khẩu không chính xác\n");
         }else{
+                user=taikhoan;
             JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
-        FrameQuanLy qly=new FrameQuanLy();
+        FrameQuanLy qly=new FrameQuanLy(user);
         qly.setVisible(true);
         qly.setLocationRelativeTo(null);
         dispose();

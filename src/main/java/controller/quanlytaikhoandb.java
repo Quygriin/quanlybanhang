@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import model.khachhang;
 import model.quanlytaikhoan;
+import model.sanpham;
 
 /**
  *
@@ -64,12 +65,64 @@ public class quanlytaikhoandb implements dbInterface<quanlytaikhoan>{
 
     @Override
     public int update(quanlytaikhoan t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    int ketqua = 0;
+    try {
+        Connection c = JDBC.getConnection();
+        if (c == null) {
+            System.out.println("Kết nối thất bại.");
+            return ketqua;
+        }
+        System.out.println("Connected to database.");
+
+        String sql = "UPDATE taikhoan SET matkhau=? WHERE tentaikhoan=?";
+        PreparedStatement st = c.prepareStatement(sql);
+
+        // Gán các giá trị
+        st.setString(1, t.getMatkhau());
+        st.setString(2, t.getTaikhoan());
+       
+
+        // Kiểm tra dữ liệu đầu vào
+        
+        // Thực thi câu lệnh
+        ketqua = st.executeUpdate();
+        System.out.println("Rows affected: " + ketqua);
+
+        JDBC.closeConnection(c);
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return ketqua;   
     }
 
     @Override
     public quanlytaikhoan selectById(quanlytaikhoan t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        quanlytaikhoan ketqua = null;
+        try {
+            Connection c = JDBC.getConnection();
+            String sql = "SELECT * FROM taikhoan where tentaikhoan=?";
+            PreparedStatement st = c.prepareStatement(sql);
+            st.setString(1, t.getTaikhoan());
+           
+            System.out.println(sql);
+            ResultSet rs = st.executeQuery();
+
+            if (rs.next()) {
+                 String tennguoidung = rs.getString("tennguoidung");
+                  String tentaikhoan = rs.getString("tentaikhoan");
+                String matkhau = rs.getString("matkhau");
+               String email=rs.getString("email");
+                String sdt = rs.getString("sdt");
+               
+
+              quanlytaikhoan ql=new quanlytaikhoan(tennguoidung, tentaikhoan, matkhau, email, sdt);
+              ketqua=ql;
+            }
+            JDBC.closeConnection(c);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ketqua;   
     }
     
     public boolean kiemtrataikhoan(quanlytaikhoan t){

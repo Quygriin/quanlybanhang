@@ -170,4 +170,66 @@ public int update(sanpham t) {
     public int deleteAll(ArrayList<sanpham> arr) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+    public ArrayList<sanpham> timsp(String tensp) {
+        ArrayList<sanpham> ketqua = new ArrayList<>();
+        try {
+            Connection c = JDBC.getConnection();
+            String sql = "SELECT * FROM sanpham where LOWER(tensanpham) LIKE LOWER(?)";
+            PreparedStatement st = c.prepareStatement(sql);
+            st.setString(1, "%" + tensp + "%");
+            System.out.println(sql);
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                String maSp = rs.getString("masanpham");
+                String tenSp = rs.getString("tensanpham");
+                String loaiSp = rs.getString("loaisanpham");
+                String nhaCungCap = rs.getString("nhasanxuat");
+                int soluong = rs.getInt("soluong");
+                int gianhap = rs.getInt("gianhap");
+                int giaban = rs.getInt("giaban");
+
+                sanpham spham = new sanpham(loaiSp, maSp, nhaCungCap, tenSp, soluong, gianhap, giaban);
+                ketqua.add(spham);
+            }
+            JDBC.closeConnection(c);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ketqua;
+    }
+    public int updatesauhoadon(sanpham t) {
+    int ketqua = 0;
+    try {
+        Connection c = JDBC.getConnection();
+        if (c == null) {
+            System.out.println("Kết nối thất bại.");
+            return ketqua;
+        }
+        System.out.println("Connected to database.");
+
+        String sql = "UPDATE sanpham SET  soluong=soluong - ? WHERE masanpham=?";
+        PreparedStatement st = c.prepareStatement(sql);
+
+        // Gán các giá trị
+        
+        st.setInt(1, t.getsoluong());
+       
+        st.setString(2, t.getmasp()); // Đảm bảo `t.getmasp()` trả về đúng mã sản phẩm
+
+        // Kiểm tra dữ liệu đầu vào
+       
+
+        // Thực thi câu lệnh
+        ketqua = st.executeUpdate();
+        System.out.println(sql);
+        System.out.println("Rows affected: " + ketqua);
+
+        JDBC.closeConnection(c);
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return ketqua;
+}
+
 }
