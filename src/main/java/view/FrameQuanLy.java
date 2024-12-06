@@ -1398,6 +1398,14 @@ public class FrameQuanLy extends javax.swing.JFrame {
            JOptionPane.showMessageDialog(this, "nhap so luong > 0");
            return;
        }
+                if(giaNhap<=0){
+           JOptionPane.showMessageDialog(this, "nhap giá nhâpj > 0");
+           return;
+       }
+       if(giaBan<=0){
+           JOptionPane.showMessageDialog(this, "nhap giá bán > 0");
+           return;
+       }
                 // Tạo đối tượng sản phẩm với thông tin mới
                 sanpham sanPhamMoi = new sanpham(loaiSp, maSp, nhaCungCap, tenSp, soLuong, giaNhap, giaBan);
 
@@ -1458,6 +1466,14 @@ public class FrameQuanLy extends javax.swing.JFrame {
 
        if(soLuong<=0){
            JOptionPane.showMessageDialog(this, "nhap so luong > 0");
+           return;
+       }
+       if(giaNhap<=0){
+           JOptionPane.showMessageDialog(this, "nhap giá nhâpj > 0");
+           return;
+       }
+       if(giaBan<=0){
+           JOptionPane.showMessageDialog(this, "nhap giá bán > 0");
            return;
        }
         
