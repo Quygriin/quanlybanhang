@@ -36,6 +36,7 @@ public class framethemloaisp extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnLuu = new javax.swing.JButton();
         txtLoaisp = new javax.swing.JTextField();
+        btnXoaLoai = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,6 +48,14 @@ public class framethemloaisp extends javax.swing.JFrame {
         btnLuu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLuuActionPerformed(evt);
+            }
+        });
+
+        btnXoaLoai.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnXoaLoai.setText("Xóa");
+        btnXoaLoai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaLoaiActionPerformed(evt);
             }
         });
 
@@ -62,8 +71,10 @@ public class framethemloaisp extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(txtLoaisp, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(btnLuu, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(64, 64, 64)
+                        .addComponent(btnLuu, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45)
+                        .addComponent(btnXoaLoai, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -73,9 +84,11 @@ public class framethemloaisp extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtLoaisp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addComponent(btnLuu)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnLuu)
+                    .addComponent(btnXoaLoai, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         pack();
@@ -97,6 +110,7 @@ public class framethemloaisp extends javax.swing.JFrame {
             l.insert(n);
             this.quanly.themvaocombox(loaisp);
             JOptionPane.showMessageDialog(this, "thêm loại sản phẩm thành công");
+            txtLoaisp.setText("");
         }
         
         }
@@ -106,6 +120,26 @@ public class framethemloaisp extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnLuuActionPerformed
 
+    private void btnXoaLoaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaLoaiActionPerformed
+       String loaisp=txtLoaisp.getText().trim();
+       StringBuilder s=new StringBuilder();
+        if(loaisp.length()>0){
+        loaispdb l=new loaispdb();
+        loaisanpham loai=l.selectById(txtLoaisp.getText().trim());
+        if(loai==null){
+            JOptionPane.showMessageDialog(this, "Loại sản phẩm không tồn tại");
+            return;
+        }else{
+            loaisanpham n=new loaisanpham();
+            n.setTenloai(loaisp);
+            l.delete(n);
+           this.quanly.themvaocombobox1();
+            JOptionPane.showMessageDialog(this, "Xóa loại sản phẩm thành công");
+            txtLoaisp.setText("");
+        }
+        
+    }//GEN-LAST:event_btnXoaLoaiActionPerformed
+    }
     /**
      * @param args the command line arguments
      */
@@ -143,6 +177,7 @@ public class framethemloaisp extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLuu;
+    private javax.swing.JButton btnXoaLoai;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField txtLoaisp;
     // End of variables declaration//GEN-END:variables

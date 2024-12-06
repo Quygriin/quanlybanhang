@@ -66,7 +66,7 @@ public class FrameQuanLy extends javax.swing.JFrame {
     public FrameQuanLy(String userser) {
         this.user=userser;
         initComponents();
-        themvaocombobox();
+        themvaocombobox1();
        
         mnuTaiKhoan.setText(userser);
         tbDanhSachKhachHang.setShowGrid(true);
@@ -1319,9 +1319,9 @@ public class FrameQuanLy extends javax.swing.JFrame {
     }//GEN-LAST:event_tfSoSach1ActionPerformed
 
     private void btnthoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthoatActionPerformed
-        // TODO add your handling code here:
+           System.exit(0);
     }//GEN-LAST:event_btnthoatActionPerformed
-    private void themvaocombobox(){ 
+    public void themvaocombobox1(){ 
         loaispdb l=new loaispdb();
        ArrayList<loaisanpham> al=new ArrayList<loaisanpham>();
         al=l.selectAll();
@@ -1588,7 +1588,7 @@ public void hienthithongkedoanhthuTheoNam(JPanel panelitem){
     }//GEN-LAST:event_btnthongkeActionPerformed
 
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
-        // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_jButton20ActionPerformed
 
     private void btnXoakhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoakhActionPerformed

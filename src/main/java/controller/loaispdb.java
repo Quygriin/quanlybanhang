@@ -97,7 +97,7 @@ public class loaispdb  {
         try {
             Connection c = JDBC.getConnection();
 
-            String sql = "DELETE FROM sanpham WHERE tenloai=?";
+            String sql = "DELETE FROM loaisanpham WHERE tenloai=?";
             PreparedStatement st = c.prepareStatement(sql);
             st.setString(1, t.getTenloai());
 
