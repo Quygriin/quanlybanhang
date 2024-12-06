@@ -89,6 +89,7 @@ public class framethemloaisp extends javax.swing.JFrame {
         loaisanpham loai=l.selectById(txtLoaisp.getText().trim());
         if(loai!=null){
             JOptionPane.showMessageDialog(this, "Loại sản phẩm đã tồn tại");
+            return;
         }
         else{
             loaisanpham n=new loaisanpham();
@@ -101,6 +102,7 @@ public class framethemloaisp extends javax.swing.JFrame {
         }
         else{
             JOptionPane.showMessageDialog(this, "Chưa nhập loại sản phẩm cần thêm");
+            return;
         }
     }//GEN-LAST:event_btnLuuActionPerformed
 

@@ -1451,6 +1451,11 @@ public class FrameQuanLy extends javax.swing.JFrame {
         int giaNhap = Integer.parseInt(txtgianhap.getText().trim());
         int giaBan = Integer.parseInt(txtgiaban.getText().trim());
 
+       if(soLuong<=0){
+           JOptionPane.showMessageDialog(this, "nhap so luong > 0");
+           return;
+       }
+        
         // Kiểm tra dữ liệu nhập vào
         if (maSp.isEmpty() || tenSp.isEmpty() || nhaCungCap.isEmpty()||txtgiaban.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vui lòng điền đầy đủ thông tin.");
@@ -1789,9 +1794,9 @@ public void hienthithongkedoanhthuTheoNam(JPanel panelitem){
       }
 	     
              
-              String gioitinh;
+              String gioitinh="";
 	      if(rdnam.isSelected()) gioitinh="nam";
-              else  gioitinh="nữ";
+              if(rdnu.isSelected())  gioitinh="nữ";
 	      String email=tfEmail.getText().trim();
 	      String diaChi=tfDiachi.getText().trim();
 	      String soDienThoai=tfSodt.getText().trim();
@@ -2025,6 +2030,14 @@ private void laydanhsachsanpham(){
             });
         }
 }
+public static boolean lasoluong(String input) {
+    try {
+        int quantity = Integer.parseInt(input); 
+        return quantity > 0; 
+    } catch (NumberFormatException e) {
+        return false; // Nếu không phải là số trả về không hợp lệ
+    }
+}
     private void btnhoadon_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhoadon_themActionPerformed
        String masp=tfhoadon_masp.getText();
        int selected=tbhoadonsp.getSelectedRow();
@@ -2033,6 +2046,10 @@ private void laydanhsachsanpham(){
            return;
        }else{
            int sl=Integer.parseInt(tfhoadon_spsoluong.getText().toString());
+           if(!lasoluong(tfhoadon_spsoluong.getText())){
+               JOptionPane.showMessageDialog(this, "Hãy nhập số lượng >0");
+               return;
+           }
            sanphamdb spdb=new sanphamdb();
            sanpham sp= new sanpham("", masp, "", "", 0, 0, 0);
            sanpham moi=new sanpham();
