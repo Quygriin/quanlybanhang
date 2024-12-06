@@ -92,4 +92,22 @@ public class loaispdb  {
         }
         return ketqua;
     }
+       public int delete(loaisanpham t) {
+        int ketqua = 0;
+        try {
+            Connection c = JDBC.getConnection();
+
+            String sql = "DELETE FROM sanpham WHERE tenloai=?";
+            PreparedStatement st = c.prepareStatement(sql);
+            st.setString(1, t.getTenloai());
+
+            System.out.println(sql);
+            ketqua = st.executeUpdate();
+
+            JDBC.closeConnection(c);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ketqua;
+    }
 }

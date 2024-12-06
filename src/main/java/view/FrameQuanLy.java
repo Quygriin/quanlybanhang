@@ -1393,7 +1393,11 @@ public class FrameQuanLy extends javax.swing.JFrame {
                 int soLuong = Integer.parseInt(txtsoluong.getText().trim());
                 int giaNhap = Integer.parseInt(txtgianhap.getText().trim());
                 int giaBan = Integer.parseInt(txtgiaban.getText().trim());
-
+                
+                if(soLuong<=0){
+           JOptionPane.showMessageDialog(this, "nhap so luong > 0");
+           return;
+       }
                 // Tạo đối tượng sản phẩm với thông tin mới
                 sanpham sanPhamMoi = new sanpham(loaiSp, maSp, nhaCungCap, tenSp, soLuong, giaNhap, giaBan);
 
@@ -1406,12 +1410,13 @@ public class FrameQuanLy extends javax.swing.JFrame {
                   DefaultTableModel model = (DefaultTableModel) tbldanhsachsansp .getModel();
                     
                     // Cập nhật giá trị cho hàng được chọn trong JTable
+                     model.setValueAt(maSp, selectedRow, 0); // Loại sản phẩm
                     model.setValueAt(loaiSp, selectedRow, 2); // Loại sản phẩm
                     model.setValueAt(tenSp, selectedRow, 1);  // Tên sản phẩm
                     model.setValueAt(nhaCungCap, selectedRow, 3); // Nhà cung cấp
-                    model.setValueAt(soLuong, selectedRow, 5);  // Số lượng
+                    model.setValueAt(soLuong, selectedRow, 6);  // Số lượng
                     model.setValueAt(giaNhap, selectedRow, 4);  // Giá nhập
-                    model.setValueAt(giaBan, selectedRow, 6);   // Giá bán
+                    model.setValueAt(giaBan, selectedRow, 5);   // Giá bán
 
                     JOptionPane.showMessageDialog(this, "Cập nhật sản phẩm thành công!");
                 } else {
@@ -1690,9 +1695,9 @@ public void hienthithongkedoanhthuTheoNam(JPanel panelitem){
                       }
 	     
               
-              String gioitinh;
+             String gioitinh="";
 	      if(rdnam.isSelected()) gioitinh="nam";
-              else  gioitinh="nữ";
+              if(rdnu.isSelected())  gioitinh="nữ";
 	      String email=tfEmail.getText().trim();
 	      String diaChi=tfDiachi.getText().trim();
 	      String soDienThoai=tfSodt.getText().trim();
@@ -1715,7 +1720,11 @@ public void hienthithongkedoanhthuTheoNam(JPanel panelitem){
                      
                       }
                   }
-                  if(tenkh.equals("")) {throw new Exception("Chưa nhập tên khách hàng");}
+                   if(tenkh.equals("")) {throw new Exception("Chưa nhập tên khách hàng");}
+                  else{
+                      if(!kiemTraTenKhachHang(tenkh)) throw new Exception("Tên không được chứa số");
+                  }
+                 
                  
 //                  if(d==null) throw new Exception("Chưa nhập ngày sinh");
 //                  else{
@@ -1823,7 +1832,8 @@ public void hienthithongkedoanhthuTheoNam(JPanel panelitem){
                   else{
                       if(!kiemTraTenKhachHang(tenkh)) throw new Exception("Tên không được chứa số");
                   }
-                 
+                  
+                 if(loaiKhachHang.equals("")) throw new Exception("Chưa nhập loại khách hàng");
 //                  if(d==null) throw new Exception("Chưa nhập ngày sinh");
 //                  else{
 //                         ngaySinh = new java.sql.Date(d.getTime());
