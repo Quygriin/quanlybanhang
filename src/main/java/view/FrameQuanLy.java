@@ -24,6 +24,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.sql.Date;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -304,12 +305,11 @@ public class FrameQuanLy extends javax.swing.JFrame {
                                 .addComponent(tfhoadon_masp, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
                                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel14Layout.createSequentialGroup()
-                                        .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(jPanel14Layout.createSequentialGroup()
                                         .addComponent(jLabel16)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(tfhoadon_spsoluong, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
                                     .addComponent(txtTimsp))))
@@ -435,7 +435,7 @@ public class FrameQuanLy extends javax.swing.JFrame {
                         .addGap(14, 14, 14)
                         .addComponent(jLabel14)
                         .addGap(18, 18, 18)
-                        .addComponent(tftongtienhoadon, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(tftongtienhoadon, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel15Layout.setVerticalGroup(
@@ -957,7 +957,7 @@ public class FrameQuanLy extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, true, true, true, true, true, true, true, true
@@ -1367,6 +1367,7 @@ public class FrameQuanLy extends javax.swing.JFrame {
     }
     if(ketqua > 0){
         JOptionPane.showMessageDialog(this, "Xóa sản phẩm thành công!");
+        laydanhsachsanpham();
     }
         }
     } else {
@@ -1427,6 +1428,7 @@ public class FrameQuanLy extends javax.swing.JFrame {
                     model.setValueAt(giaBan, selectedRow, 5);   // Giá bán
 
                     JOptionPane.showMessageDialog(this, "Cập nhật sản phẩm thành công!");
+                    laydanhsachsanpham();
                 } else {
                     JOptionPane.showMessageDialog(this, "Cập nhật sản phẩm thất bại!");
                 }
@@ -1515,6 +1517,7 @@ public class FrameQuanLy extends javax.swing.JFrame {
             // Thông báo và xóa dữ liệu nhập
             JOptionPane.showMessageDialog(null, "Thêm sản phẩm thành công!");
              clearInputFields();// hàm này để xóa dữ liệu sau khi thêm
+             laydanhsachsanpham();
         } 
     } catch (NumberFormatException e) {
         JOptionPane.showMessageDialog(null, "Vui lòng nhập đúng định dạng số cho các trường số lượng, giá nhập và giá bán.");
@@ -1650,9 +1653,11 @@ public void hienthithongkedoanhthuTheoNam(JPanel panelitem){
                   }
               
             
-            
+            String gioitinh="";
 //              java.sql.Date ngaySinh = new java.sql.Date(ngaySinhdate.getTime());
-              String gioitinh=tbDanhSachKhachHang.getValueAt(selectedRow, 3).toString();
+              if(tbDanhSachKhachHang.getValueAt(selectedRow, 3)!=null)
+               gioitinh=tbDanhSachKhachHang.getValueAt(selectedRow, 3).toString();
+              
               String email=tbDanhSachKhachHang.getValueAt(selectedRow, 4).toString();
               String diaChi=tbDanhSachKhachHang.getValueAt(selectedRow, 5).toString();
               String soDienThoai=tbDanhSachKhachHang.getValueAt(selectedRow, 6).toString();
@@ -2096,13 +2101,13 @@ public static boolean lasoluong(String input) {
        }
         int sohang=tbhoadon_dathem.getRowCount();
         double tongtien=0;
-        
+        DecimalFormat df = new DecimalFormat("#");
         for (int i=0;i<sohang;i++) {
            double t=(double)tbhoadon_dathem.getValueAt(i, 4);
            tongtien+=t;
          }
-        System.out.println(tongtien);
-        String  tt=String.valueOf(tongtien);
+        System.out.println(df.format(tongtien));
+        String  tt=String.valueOf(df.format(tongtien));
        tftongtienhoadon.setText(tt);
     }//GEN-LAST:event_btnhoadon_themActionPerformed
 
