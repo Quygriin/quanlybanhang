@@ -1771,7 +1771,7 @@ public void hienthithongkedoanhthuTheoNam(JPanel panelitem){
       return sdt.matches(phoneNumber);
   }
   public boolean kiemTraTenKhachHang(String tenKhachHang) {
-    return tenKhachHang.matches("^[a-zA-Z\\s]+$");
+    return tenKhachHang.matches("^[a-zA-ZÀ-ỹ\\s]+$");
 }
     private void btnThemKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemKhachHangActionPerformed
               

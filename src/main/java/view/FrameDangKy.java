@@ -207,6 +207,7 @@ private boolean isValidEmail(String email) {
     String emailRegex = "^[A-Za-z0-9+_.-]+@(.+)$"; // Regex kiểm tra định dạng email
     return email.matches(emailRegex);
 }
+
     private void btndangkyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndangkyActionPerformed
       String tennguoidung=tftennguoidung.getText().trim();
       String taikhoan=tftaikhoan.getText().trim();
@@ -227,7 +228,7 @@ private boolean isValidEmail(String email) {
             if(!isValidEmail(email)) sb.append("email không hợp lệ");
             if(qldb.kiemtraemail(email)) sb.append("email đã tồn tại");
         }
-        if(isValidphone(sdt)) sb.append("Chưa nhập đúng số điện thoại \n");
+        if(!isValidphone(sdt)) sb.append("Chưa nhập đúng số điện thoại \n");
        
         if(!matkhau.equals(matkhaunhaplai)) sb.append("mật khẩu không trùng mật khẩu nhập lại \n");
         
